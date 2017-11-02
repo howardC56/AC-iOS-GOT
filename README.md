@@ -24,6 +24,8 @@
 
 ![](https://media.giphy.com/media/3otWpoVBEgHIed4otG/giphy.gif)
 
+- Create a back button that segues from the detail view to the tableview.
+
 - App must be dynamically laid out for portrait mode for all devices. Use autolayout.
 
 ## Section 2: Bonus
