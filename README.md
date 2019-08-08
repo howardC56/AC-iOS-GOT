@@ -32,3 +32,10 @@
 
 - Create a search bar that filters on the name on the episode.
 - Modify search bar so the user can choose to search on Title or Description. When you filter you shouldn't have title show up.
+
+# Learning Objectives:
+
+- Use UITableViews to display the data for an app arranged in rows
+- Create custom Table View Cells to display text and images
+- Use a Navigation Controller to manage transitions
+- Segue from one View Controller to another to show additional information
