@@ -16,7 +16,7 @@ var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let mainScreen = MainViewController()
         let navigationController = UINavigationController(rootViewController: mainScreen)
-        
+        navigationController.navigationBar.prefersLargeTitles = true
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
