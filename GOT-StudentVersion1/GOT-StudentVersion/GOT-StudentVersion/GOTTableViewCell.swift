@@ -13,11 +13,12 @@ class GOTTableViewCell: UITableViewCell {
     var name = UILabel()
     var episode = UILabel()
     var picture = UIImageView()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureName()
+        addSubview(name)
         configureEpisode()
+        name.configureLabel(name)
         configurePicture()
         setImageConstraints()
         setNameConstraints()
@@ -32,12 +33,6 @@ class GOTTableViewCell: UITableViewCell {
         picture.clipsToBounds = true
         picture.layer.cornerRadius = 10
         addSubview(picture)
-    }
-    
-    func configureName() {
-        name.numberOfLines = 0
-        name.adjustsFontSizeToFitWidth = true
-        addSubview(name)
     }
     
     func configureEpisode() {

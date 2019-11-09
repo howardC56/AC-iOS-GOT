@@ -18,3 +18,10 @@ extension UIView {
         bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
     }
 }
+
+extension UILabel {
+    func configureLabel(_ label: UILabel) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 10
+    }
+}
