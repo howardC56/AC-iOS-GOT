@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GOTTableViewCellTypeTwo: UITableViewCell {
+final class GOTTableViewCellTypeTwo: UITableViewCell {
     
     var name = UILabel()
     var episode = UILabel()
@@ -28,26 +28,26 @@ class GOTTableViewCellTypeTwo: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configurePicture() {
+    private func configurePicture() {
         picture.clipsToBounds = true
         picture.layer.cornerRadius = 10
         addSubview(picture)
     }
     
-    func configureName() {
+    private func configureName() {
         name.numberOfLines = 0
         name.adjustsFontSizeToFitWidth = true
         addSubview(name)
     }
     
-    func configureEpisode() {
+    private func configureEpisode() {
         episode.numberOfLines = 0
         episode.adjustsFontSizeToFitWidth = true
         addSubview(episode)
     }
     
     
-    func setImageConstraints() {
+    private func setImageConstraints() {
         picture.translatesAutoresizingMaskIntoConstraints = false
         picture.heightAnchor.constraint(equalToConstant: 80).isActive = true
         picture.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -55,7 +55,7 @@ class GOTTableViewCellTypeTwo: UITableViewCell {
         picture.widthAnchor.constraint(equalTo: picture.heightAnchor, multiplier: 16/9).isActive = true
     }
     
-    func setNameConstraints() {
+    private func setNameConstraints() {
         name.translatesAutoresizingMaskIntoConstraints = false
         name.trailingAnchor.constraint(equalTo: picture.leadingAnchor, constant: -20).isActive = true
         name.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
@@ -64,7 +64,7 @@ class GOTTableViewCellTypeTwo: UITableViewCell {
         name.textAlignment = .center
     }
     
-    func setEpisodeConstraints() {
+    private func setEpisodeConstraints() {
         episode.translatesAutoresizingMaskIntoConstraints = false
         episode.trailingAnchor.constraint(equalTo: picture.leadingAnchor, constant: -20).isActive = true
         episode.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true

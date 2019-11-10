@@ -8,8 +8,8 @@
 
 import UIKit
 
-class EpisodeDetailViewController: UIViewController {
-
+final class EpisodeDetailViewController: UIViewController {
+    
     let picture = UIImageView()
     let episodeName = UILabel()
     let airDate = UILabel()
@@ -20,7 +20,7 @@ class EpisodeDetailViewController: UIViewController {
     var selectedEpisode: GOTEpisode!
     
     
-    func labelInfo() {
+    private func labelInfo() {
         picture.image = UIImage(named: selectedEpisode.originalImageID)
         episodeName.text = selectedEpisode.name
         airDate.text = "Air Date: \(selectedEpisode.airdate)"
@@ -43,14 +43,14 @@ class EpisodeDetailViewController: UIViewController {
         airDateConstraints()
         summaryConstraints()
         labelInfo()
-        }
+    }
     
-    func configurePicture() {
+    private func configurePicture() {
         picture.clipsToBounds = true
         view.addSubview(picture)
     }
     
-    func addSubViews() {
+    private func addSubViews() {
         view.addSubview(episodeName)
         view.addSubview(seasonNumber)
         view.addSubview(episodeNumber)
@@ -59,16 +59,16 @@ class EpisodeDetailViewController: UIViewController {
         view.addSubview(summary)
     }
     
-    func pictureConstraints() {
+    private func pictureConstraints() {
         picture.translatesAutoresizingMaskIntoConstraints = false
-        picture.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor , constant: 0).isActive = true
-        picture.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
-        picture.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+        picture.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor ).isActive = true
+        picture.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        picture.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         picture.heightAnchor.constraint(equalToConstant: 300).isActive = true
         picture.widthAnchor.constraint(equalTo: picture.heightAnchor, multiplier: 16/9).isActive = true
     }
     
-    func episodeNameConstraints() {
+    private func episodeNameConstraints() {
         episodeName.numberOfLines = 0
         episodeName.adjustsFontSizeToFitWidth = true
         episodeName.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +79,7 @@ class EpisodeDetailViewController: UIViewController {
         episodeName.textAlignment = .center
     }
     
-    func seasonNumberConstraints() {
+    private func seasonNumberConstraints() {
         seasonNumber.numberOfLines = 0
         seasonNumber.adjustsFontSizeToFitWidth = true
         seasonNumber.translatesAutoresizingMaskIntoConstraints = false
@@ -89,7 +89,7 @@ class EpisodeDetailViewController: UIViewController {
         seasonNumber.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
-    func episodeNumberConstraints() {
+    private func episodeNumberConstraints() {
         episodeNumber.numberOfLines = 0
         episodeNumber.adjustsFontSizeToFitWidth = true
         episodeNumber.translatesAutoresizingMaskIntoConstraints = false
@@ -99,7 +99,7 @@ class EpisodeDetailViewController: UIViewController {
         episodeNumber.trailingAnchor.constraint(equalTo: seasonNumber.trailingAnchor).isActive = true
     }
     
-    func runTimeConstraints() {
+    private func runTimeConstraints() {
         runTime.numberOfLines = 0
         runTime.adjustsFontSizeToFitWidth = true
         runTime.translatesAutoresizingMaskIntoConstraints = false
@@ -109,7 +109,7 @@ class EpisodeDetailViewController: UIViewController {
         runTime.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
-    func airDateConstraints() {
+    private func airDateConstraints() {
         airDate.numberOfLines = 0
         airDate.adjustsFontSizeToFitWidth = true
         airDate.translatesAutoresizingMaskIntoConstraints = false
@@ -119,7 +119,7 @@ class EpisodeDetailViewController: UIViewController {
         airDate.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
-    func summaryConstraints() {
+    private func summaryConstraints() {
         summary.numberOfLines = 0
         summary.adjustsFontSizeToFitWidth = true
         summary.translatesAutoresizingMaskIntoConstraints = false
@@ -128,5 +128,5 @@ class EpisodeDetailViewController: UIViewController {
         summary.trailingAnchor.constraint(equalTo: seasonNumber.trailingAnchor, constant: -20).isActive = true
         summary.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
     }
-
+    
 }

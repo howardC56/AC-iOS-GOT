@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GOTTableViewCell: UITableViewCell {
+final class GOTTableViewCell: UITableViewCell {
     
     var name = UILabel()
     var episode = UILabel()
@@ -29,20 +29,20 @@ class GOTTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configurePicture() {
+    private func configurePicture() {
         picture.clipsToBounds = true
         picture.layer.cornerRadius = 10
         addSubview(picture)
     }
     
-    func configureEpisode() {
+    private func configureEpisode() {
         episode.numberOfLines = 0
         episode.adjustsFontSizeToFitWidth = true
         addSubview(episode)
     }
     
     
-    func setImageConstraints() {
+    private func setImageConstraints() {
         picture.translatesAutoresizingMaskIntoConstraints = false
         picture.heightAnchor.constraint(equalToConstant: 80).isActive = true
         picture.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -50,7 +50,7 @@ class GOTTableViewCell: UITableViewCell {
         picture.widthAnchor.constraint(equalTo: picture.heightAnchor, multiplier: 16/9).isActive = true
     }
     
-    func setNameConstraints() {
+    private func setNameConstraints() {
         name.translatesAutoresizingMaskIntoConstraints = false
         name.leadingAnchor.constraint(equalTo: picture.trailingAnchor, constant: 20).isActive = true
         name.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
@@ -58,7 +58,7 @@ class GOTTableViewCell: UITableViewCell {
         name.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
     }
     
-    func setEpisodeConstraints() {
+    private func setEpisodeConstraints() {
         episode.translatesAutoresizingMaskIntoConstraints = false
         episode.leadingAnchor.constraint(equalTo: picture.trailingAnchor, constant: 20).isActive = true
         episode.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true

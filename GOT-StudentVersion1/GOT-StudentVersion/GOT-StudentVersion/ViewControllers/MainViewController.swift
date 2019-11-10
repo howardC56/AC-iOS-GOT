@@ -8,9 +8,10 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     var tableView = UITableView()
+    var sortedEpisodes = GOTEpisode.sortedEpisodes()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,7 @@ class MainViewController: UIViewController {
         title = "Game Of Thrones"
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -32,46 +33,23 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 10
-        case 1...5:
-            return 10
-        case 6:
-            return 7
-        default:
-            return 0
-        }
+        return sortedEpisodes[section].count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        7
+        sortedEpisodes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var episodes = [GOTEpisode]()
-        let cellType = indexPath.section + 1
-        if cellType % 2 == 1 {
+        let episode = sortedEpisodes[indexPath.section][indexPath.row]
+        if indexPath.section % 2 == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "GOTTableViewCell") as? GOTTableViewCell {
-                for each in GOTEpisode.allEpisodes {
-                    if each.season == cellType {
-                        episodes.append(each)
-                    }
-                }
-                let showEpisodes = episodes[indexPath.row]
-                cell.configureCell(showEpisodes)
+                cell.configureCell(episode)
                 return cell
             }
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "GOTTableViewCellTypeTwo") as? GOTTableViewCellTypeTwo {
-                for each in GOTEpisode.allEpisodes {
-                    if each.season == cellType {
-                        episodes.append(each)
-                    }
-                }
-                let showEpisodes = episodes[indexPath.row]
-                cell.configureCell(showEpisodes)
-                
+                cell.configureCell(episode)
                 return cell
             }
         }
@@ -83,7 +61,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedEpisode = GOTEpisode.allEpisodes[indexPath.row]
+        let selectedEpisode = sortedEpisodes[indexPath.section][indexPath.row]
         let viewController = EpisodeDetailViewController()
         viewController.selectedEpisode = selectedEpisode
         self.navigationController?.pushViewController(viewController, animated: true)
