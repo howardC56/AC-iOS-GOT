@@ -72,10 +72,12 @@ final class EpisodeDetailViewController: UIViewController {
         episodeName.numberOfLines = 0
         episodeName.adjustsFontSizeToFitWidth = true
         episodeName.translatesAutoresizingMaskIntoConstraints = false
-        episodeName.topAnchor.constraint(equalTo: picture.bottomAnchor).isActive = true
-        episodeName.leadingAnchor.constraint(equalTo: picture.leadingAnchor).isActive = true
-        episodeName.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        episodeName.trailingAnchor.constraint(equalTo: picture.trailingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+        episodeName.topAnchor.constraint(equalTo: picture.bottomAnchor),
+        episodeName.leadingAnchor.constraint(equalTo: picture.leadingAnchor),
+        episodeName.heightAnchor.constraint(equalToConstant: 30),
+        episodeName.trailingAnchor.constraint(equalTo: picture.trailingAnchor)
+        ])
         episodeName.textAlignment = .center
     }
     

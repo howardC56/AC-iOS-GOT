@@ -65,6 +65,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let viewController = EpisodeDetailViewController()
         viewController.selectedEpisode = selectedEpisode
         self.navigationController?.pushViewController(viewController, animated: true)
-        
     }
+    
 }
